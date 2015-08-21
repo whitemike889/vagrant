@@ -12,5 +12,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision "puppet" do |puppet|
     puppet.manifests_path = "../puppet/manifests"
     puppet.manifest_file  = "site.pp"
+    puppet.module_path = "../puppet/modules"
+    puppet.hiera_config_path = "../puppet/hieradata"
+
+    puppet.working_directory = '/opt/opensource.org/puppet'
+
+    puppet.options = ['--parser=future']
   end
 end
